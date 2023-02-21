@@ -1,5 +1,8 @@
 import { ReactNode } from 'react'
-import { Container, Flex, Heading } from '@chakra-ui/layout'
+import { Flex, Heading } from '@chakra-ui/layout'
+
+import { Header } from './Header'
+import { Container } from './Container'
 
 interface IPageLayoutProps {
   children: ReactNode
@@ -8,11 +11,8 @@ interface IPageLayoutProps {
 export function PageLayout({ children }: IPageLayoutProps) {
   return (
     <Flex direction="column" minHeight="100vh">
-      {/* <Header /> */}
-      <Heading>Header</Heading>
-      <Container as="main" maxW="container.lg">
-        {children}
-      </Container>
+      <Header />
+      <Container as="main">{children}</Container>
       <Heading>Footer</Heading>
       {/* <Footer /> */}
     </Flex>
