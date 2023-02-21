@@ -2,6 +2,7 @@ import { NextSeo } from 'next-seo'
 import { ReactNode } from 'react'
 
 import { NEXT_SEO_DEFAULT } from '@/config/SEO'
+import { AppWrapper } from '@/components/Layout/AppWrapper'
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -10,9 +11,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <NextSeo useAppDir {...NEXT_SEO_DEFAULT} />
       </head>
       <body>
-        <h1>Header</h1>
-        {children}
-        <h1>Footer</h1>
+        <AppWrapper>{children}</AppWrapper>
       </body>
     </html>
   )
