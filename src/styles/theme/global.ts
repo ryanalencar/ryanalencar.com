@@ -4,7 +4,7 @@ const global = ({ colorMode }: GlobalStyleProps) => ({
   'html,body': {
     backgroundColor: colorMode === 'dark' ? 'dark' : 'white.100',
     color: colorMode === 'dark' ? 'white.100' : 'dark',
-    '-webkit-font-smoothing': 'antialiased',
+    WebkitFontSmoothing: 'antialiased',
   },
   _selection: {
     backgroundColor: 'purple.500',
