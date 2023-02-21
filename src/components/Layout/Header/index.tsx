@@ -1,6 +1,8 @@
 import { Box, Flex } from '@chakra-ui/layout'
 import { Link } from '@chakra-ui/next-js'
 
+import Image from 'next/image'
+
 import { GradientLine } from '@/components/GradientLine'
 
 import { NavBar } from './NavBar'
@@ -27,7 +29,15 @@ export function Header() {
         py={8}
       >
         <Box cursor="pointer" title="Go to home">
-          <Link href="/">Logo to home</Link>
+          <Link href="/">
+            <Image
+              alt="Ryan Alencar Logo"
+              src="/images/logo.png"
+              width={46}
+              height={60}
+              priority
+            />
+          </Link>
         </Box>
 
         <NavBar />
