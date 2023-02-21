@@ -2,7 +2,6 @@ import { Box, Flex } from '@chakra-ui/layout'
 import { Link } from '@chakra-ui/next-js'
 
 import { GradientLine } from '@/components/GradientLine'
-import { ToggleThemeButton } from '@/components/ToggleThemeButton'
 
 import { NavBar } from './NavBar'
 import { Container } from '../Container'
@@ -33,7 +32,7 @@ export function Header() {
 
         <NavBar />
 
-        <ToggleThemeButton />
+        {/* <ToggleThemeButton /> */}
       </Container>
     </Flex>
   )

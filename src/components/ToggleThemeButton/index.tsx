@@ -1,3 +1,5 @@
+'use client'
+
 import { Button, ButtonProps } from '@chakra-ui/button'
 import { useColorMode } from '@chakra-ui/react'
 import { Moon, SunDim } from 'phosphor-react'
