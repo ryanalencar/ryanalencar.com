@@ -1,8 +1,12 @@
 'use client'
-import { ChakraProvider } from '@chakra-ui/react'
 
-import { CacheProvider } from '@chakra-ui/next-js'
 import React, { ReactNode } from 'react'
+import { ChakraProvider } from '@chakra-ui/react'
+import { Heading } from '@chakra-ui/layout'
+import { CacheProvider } from '@chakra-ui/next-js'
+
+import { theme } from '@/styles/theme'
+import { gradients } from '@/styles/theme/gradients'
 
 interface IAppWrapperProps {
   children: ReactNode
@@ -11,8 +15,10 @@ interface IAppWrapperProps {
 export function AppWrapper({ children }: IAppWrapperProps) {
   return (
     <CacheProvider>
-      <ChakraProvider>
-        <h1>Header</h1>
+      <ChakraProvider theme={theme} resetCSS>
+        <Heading bgClip="text" bgGradient={gradients['yellow-pink']}>
+          Header
+        </Heading>
         {children}
         <h1>Footer</h1>
       </ChakraProvider>
