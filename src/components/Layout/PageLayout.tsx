@@ -1,3 +1,5 @@
+'use client'
+
 import { ReactNode } from 'react'
 import { Flex, Heading } from '@chakra-ui/layout'
 

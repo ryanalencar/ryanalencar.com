@@ -78,7 +78,7 @@ export const colors = {
     800: '#b3b35a',
     900: '#99994d',
   },
-  dark: '#262626',
+  dark: '#121212',
   white: {
     100: '#F2F2F2',
   },

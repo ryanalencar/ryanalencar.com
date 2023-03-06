@@ -1,11 +1,11 @@
 import { HStack } from '@chakra-ui/layout'
-import { Link } from '@chakra-ui/next-js'
 import { Button } from '@chakra-ui/button'
 import { Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/menu'
 
 import { X, List } from 'phosphor-react'
 
 import { navigationItems } from '@/constants/navigation'
+import { Link } from '@/components/common/Link'
 
 const DesktopNavBar = () => (
   <HStack

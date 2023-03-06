@@ -1,9 +1,8 @@
 import { Box, Flex } from '@chakra-ui/layout'
 import { Link } from '@chakra-ui/next-js'
-
 import Image from 'next/image'
 
-import { GradientLine } from '@/components/GradientLine'
+import { GradientLine } from '@/components/common/GradientLine'
 
 import { NavBar } from './NavBar'
 import { Container } from '../Container'
