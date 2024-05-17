@@ -1,5 +1,5 @@
-import { Sidebar } from '@/components/Sidebar'
+import { ResumeSidebar } from '@/components/resume-sidebar'
 
 export default function Home() {
-  return <Sidebar />
+  return <ResumeSidebar />
 }
