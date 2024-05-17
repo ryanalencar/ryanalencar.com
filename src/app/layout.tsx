@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 import { ThemeProvider } from '@/components/theme-provider'
 
 import '@/styles/globals.css'
+import { ResumeSidebar } from '@/components/resume-sidebar'
+import { TooltipProvider } from '@/components/ui/tooltip'
+import { MenuSidebar } from '@/components/menu-sidebar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,7 +29,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <TooltipProvider>
+            <div className="flex space-x-4">
+              <ResumeSidebar />
+              {children}
+              <MenuSidebar />
+            </div>
+          </TooltipProvider>
         </ThemeProvider>
       </body>
     </html>

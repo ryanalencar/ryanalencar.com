@@ -1,5 +1,7 @@
-import { ResumeSidebar } from '@/components/resume-sidebar'
-
 export default function Home() {
-  return <ResumeSidebar />
+  return (
+    <div className="flex-1">
+      <h1>Content</h1>
+    </div>
+  )
 }
