@@ -1,100 +1,232 @@
-import React from 'react'
-import Link from 'next/link'
+import React, { ReactElement } from 'react'
 import {
-  Package2,
-  Bell,
-  Home,
-  LineChart,
+  Github,
+  Instagram,
+  Linkedin,
   Menu,
-  Package,
-  ShoppingCart,
-  Users,
+  BadgeCheck,
+  BadgeX,
+  ChevronsUpDown,
+  ArrowDownToLine,
 } from 'lucide-react'
+import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from '@/components/ui/tooltip'
+
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from '@/components/ui/collapsible'
+import { Badge } from '@/components/ui/badge'
+import { getInitials } from '@/lib/utils'
+
+interface IPersonalInfo {
+  infoKey: string
+  info: string | number | boolean
+  infoLabel: string
+}
+
+interface ISocialMedia {
+  icon: ReactElement
+  username: string
+  url: string
+  social: string
+}
+
+interface ILanguages {
+  language: string
+  level: string
+}
+
+interface ISkills {
+  role: string
+  techs: string[]
+}
+
+interface IProfile {
+  name: string
+  position: string
+  avatar: string
+  avatarAlt: string
+  socials: ISocialMedia[]
+  personalInfo: IPersonalInfo[]
+  languages: ILanguages[]
+  skills: ISkills[]
+  resumeDownloadUrl: string
+}
 
 export function ResumeSidebar() {
+  const socials = [
+    {
+      social: 'Instagram',
+      icon: <Instagram />,
+      username: 'ryanalencar.dev',
+      url: 'https://www.instagram.com/ryanalencar.dev',
+    },
+    {
+      social: 'Linkedin',
+      icon: <Linkedin />,
+      username: 'ryanalencar',
+      url: 'https://www.linkedin.com/in/ryanalencar/',
+    },
+    {
+      social: 'Git Hub',
+      icon: <Github />,
+      username: 'ryanalencar',
+      url: 'https://github.com/ryanalencar',
+    },
+  ] satisfies ISocialMedia[]
+
+  const personalInfo = [
+    { infoKey: 'age', info: '21', infoLabel: 'Age' },
+    { infoKey: 'country', info: 'Brazil', infoLabel: 'Country' },
+    { infoKey: 'openToWork', info: true, infoLabel: 'Seeking Opportunities' },
+  ] satisfies IPersonalInfo[]
+
+  const languages = [
+    {
+      language: 'English',
+      level: 'C1 Advanced',
+    },
+    {
+      language: 'Portuguese',
+      level: 'Native',
+    },
+  ] satisfies ILanguages[]
+
+  const skills = [
+    {
+      role: 'Front End',
+      techs: ['React', 'React Native', 'NextJs'],
+    },
+    {
+      role: 'Back End',
+      techs: ['NodeJs', 'NestJs'],
+    },
+  ] satisfies ISkills[]
+
+  const profile = {
+    name: 'Ryan Alencar',
+    avatar: '',
+    avatarAlt: '@ryanalencar.dev',
+    position: 'Full Stack Engineer',
+    socials,
+    personalInfo,
+    languages,
+    skills,
+    resumeDownloadUrl:
+      'https://www.caceres.mt.gov.br/fotos_institucional_downloads/2.pdf',
+  } satisfies IProfile
+
+  // { infoKey: 'email', info: 'ryanalencar.dev@gmail.com', label: 'Email' },
+  // { infoKey: 'phone', info: '+55 (85) 99143-9952', label: 'Phone' },
+
   return (
     <div className="grid min-h-screen md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
-      <div className="hidden border-r bg-muted/40 md:block">
-        <div className="flex h-full max-h-screen flex-col gap-2">
-          <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-            <Link href="/" className="flex items-center gap-2 font-semibold">
-              <Package2 className="h-6 w-6" />
-              <span className="">Acme Inc</span>
-            </Link>
-            <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
-              <Bell className="h-4 w-4" />
-              <span className="sr-only">Toggle notifications</span>
-            </Button>
+      <div className="hidden md:block bg-white dark:bg-zinc-900 p-6">
+        <div className="flex items-center flex-col gap-4 h-full">
+          <div className="mt-6">
+            <Avatar className="w-40 h-40">
+              <AvatarImage alt={profile.avatarAlt} />
+              <AvatarFallback>{getInitials(profile.name)}</AvatarFallback>
+            </Avatar>
           </div>
-          <div className="flex-1">
-            <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
-              <Link
-                href="#"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-              >
-                <Home className="h-4 w-4" />
-                Dashboard
-              </Link>
-              <Link
-                href="#"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-              >
-                <ShoppingCart className="h-4 w-4" />
-                Orders
-                <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                  6
-                </Badge>
-              </Link>
-              <Link
-                href="#"
-                className="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
-              >
-                <Package className="h-4 w-4" />
-                Products{' '}
-              </Link>
-              <Link
-                href="#"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-              >
-                <Users className="h-4 w-4" />
-                Customers
-              </Link>
-              <Link
-                href="#"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-              >
-                <LineChart className="h-4 w-4" />
-                Analytics
-              </Link>
-            </nav>
+          <div className="text-center">
+            <h1 className="text-slate-900 dark:text-white text-lg font-semibold">
+              {profile.name}
+            </h1>
+            <p className="text-slate-900 dark:text-white text-sm font-extralight">
+              {profile.position}
+            </p>
           </div>
-          <div className="mt-auto p-4">
-            <Card x-chunk="dashboard-02-chunk-0">
-              <CardHeader className="p-2 pt-0 md:p-4">
-                <CardTitle>Upgrade to Pro</CardTitle>
-                <CardDescription>
-                  Unlock all features and get unlimited access to our support
-                  team.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-2 pt-0 md:p-4 md:pt-0">
-                <Button size="sm" className="w-full">
-                  Upgrade
+          <div className="flex gap-1">
+            {profile?.socials.map(({ icon, url, username, social }) => (
+              <div key={social}>
+                <Button size="icon" asChild variant="ghost">
+                  <Link href={url} target="_blank">
+                    <Tooltip>
+                      <TooltipTrigger>{icon}</TooltipTrigger>
+                      <TooltipContent>@{username}</TooltipContent>
+                    </Tooltip>
+                  </Link>
                 </Button>
-              </CardContent>
-            </Card>
+              </div>
+            ))}
           </div>
+          <div className="w-full h-2 border-b-2 dark:border-zinc-600 rounded-sm" />
+          <div className="w-full grid grid-cols-1 grid-rows-2 my-4 gap-2">
+            {profile?.personalInfo.map(({ info, infoKey, infoLabel }) => (
+              <div key={infoKey} className="flex justify-between items-center">
+                <Badge variant="secondary">{infoLabel}:</Badge>
+                {typeof info === 'boolean' ? (
+                  info ? (
+                    <BadgeCheck className="fill-green-400 text-black" />
+                  ) : (
+                    <BadgeX className="fill-red-400 text-black" />
+                  )
+                ) : (
+                  <p>{info}</p>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="w-full h-2 border-b-2 dark:border-zinc-600 rounded-sm" />
+          <div className="w-full grid grid-cols-1 grid-rows-2 my-4 gap-2">
+            <h3>Languages</h3>
+            {profile?.languages.map(({ language, level }) => (
+              <div key={language} className="flex justify-between items-center">
+                <Badge variant="secondary">{language}:</Badge>
+                <p>{level}</p>
+              </div>
+            ))}
+          </div>
+          <div className="w-full h-2 border-b-2 dark:border-zinc-600 rounded-sm" />
+          <div className="w-full flex flex-col gap-2 my-4">
+            <h3>Skills</h3>
+            {profile?.skills.map(({ role, techs }) => (
+              <Collapsible key={role}>
+                <div className="flex items-center gap-4 ">
+                  <ul className="list-disc ml-8">
+                    <li className="text-sm underline underline-offset-4">
+                      {role}
+                    </li>
+                  </ul>
+                  <CollapsibleTrigger asChild>
+                    <Button variant="ghost" size="sm" className="w-9 p-0">
+                      <ChevronsUpDown className="h-4 w-4" />
+                      <span className="sr-only">Toggle</span>
+                    </Button>
+                  </CollapsibleTrigger>
+                </div>
+                <CollapsibleContent>
+                  {techs.map((tech) => (
+                    <ul key={tech} className="list-disc ml-16 mt-2">
+                      <li className="text-sm">{tech}</li>
+                    </ul>
+                  ))}
+                </CollapsibleContent>
+              </Collapsible>
+            ))}
+          </div>
+          <div className="w-full h-2 border-b-2 dark:border-zinc-600 rounded-sm" />
+          <Button className="flex items-center gap-2 my-4" asChild>
+            <Link
+              href={profile.resumeDownloadUrl}
+              target="_blank"
+              download="resume-ryan-alencar"
+            >
+              Download CV
+              <ArrowDownToLine className="w-5 h-5" />
+            </Link>
+          </Button>
         </div>
       </div>
       <div className="block sm:hidden">
@@ -110,71 +242,7 @@ export function ResumeSidebar() {
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="flex flex-col">
-              <nav className="grid gap-2 text-lg font-medium">
-                <Link
-                  href="#"
-                  className="flex items-center gap-2 text-lg font-semibold"
-                >
-                  <Package2 className="h-6 w-6" />
-                  <span className="sr-only">Acme Inc</span>
-                </Link>
-                <Link
-                  href="#"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-                >
-                  <Home className="h-5 w-5" />
-                  Dashboard
-                </Link>
-                <Link
-                  href="#"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
-                >
-                  <ShoppingCart className="h-5 w-5" />
-                  Orders
-                  <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                    6
-                  </Badge>
-                </Link>
-                <Link
-                  href="#"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-                >
-                  <Package className="h-5 w-5" />
-                  Products
-                </Link>
-                <Link
-                  href="#"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-                >
-                  <Users className="h-5 w-5" />
-                  Customers
-                </Link>
-                <Link
-                  href="#"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-                >
-                  <LineChart className="h-5 w-5" />
-                  Analytics
-                </Link>
-              </nav>
-              <div className="mt-auto">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Upgrade to Pro</CardTitle>
-                    <CardDescription>
-                      Unlock all features and get unlimited access to our
-                      support team.
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <Button size="sm" className="w-full">
-                      Upgrade
-                    </Button>
-                  </CardContent>
-                </Card>
-              </div>
-            </SheetContent>
+            <SheetContent side="left" className="flex flex-col"></SheetContent>
           </Sheet>
         </header>
       </div>
