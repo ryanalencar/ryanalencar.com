@@ -28,7 +28,7 @@ export function MenuSidebar() {
       <div className="flex flex-col items-center gap-4 px-2 py-6 mb-12">
         <ModeToggle />
       </div>
-      <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
+      <nav className="flex flex-col items-center gap-8 px-2 sm:py-5">
         {sidebarLinks.map(({ href, label, icon }) => (
           <Tooltip key={label}>
             <TooltipTrigger asChild>

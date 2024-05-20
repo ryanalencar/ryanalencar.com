@@ -30,7 +30,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <TooltipProvider>
-            <div className="flex space-x-6">
+            <div className="flex">
               <ResumeSidebar />
               {children}
               <MenuSidebar />
