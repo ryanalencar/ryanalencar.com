@@ -9,7 +9,7 @@ import { ResumeSidebarContent } from './resume-sidebar-content'
 
 export function ResumeSidebar() {
   return (
-    <div className="grid min-h-screen md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
+    <div className="grid min-h-screen md:grid-cols-[280px_1fr] lg:grid-cols-[280px_1fr]">
       <div className="hidden md:block dark:bg-slate-950 p-6">
         <ResumeSidebarContent />
       </div>
